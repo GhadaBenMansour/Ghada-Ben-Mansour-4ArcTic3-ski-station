@@ -1,12 +1,13 @@
 package tn.esprit.ghadabenmansour_4arctic3.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ghadabenmansour_4arctic3.entities.Piste;
 import tn.esprit.ghadabenmansour_4arctic3.services.IPisteServices;
 
 import java.util.List;
-
+@AllArgsConstructor
 @RestController
 @RequestMapping("piste")
 public class PisteRestController {
@@ -37,5 +38,9 @@ public class PisteRestController {
     @GetMapping("all")
     public List<Piste> getretrievePistes() {
         return pisteServices.getretrievePistes();
+    }
+    @PutMapping("assignToSkier/{numPiste}/{numSkier}")
+    public Piste assignToPiste(@PathVariable Long numPiste, @PathVariable Long numSkier) {
+        return pisteServices.assignToSkier(numPiste,numSkier);
     }
 }

@@ -22,7 +22,7 @@ public class Subscription implements Serializable {
     @Column(nullable = false)
     LocalDate startDate;
 
-    @Column(nullable = false)
+    //@Column(nullable = false) : n'accepte pas une valeure nulle
     LocalDate endDate;
 
     Float price;

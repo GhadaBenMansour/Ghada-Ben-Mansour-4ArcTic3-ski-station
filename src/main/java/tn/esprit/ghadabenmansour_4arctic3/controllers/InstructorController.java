@@ -45,4 +45,10 @@ public class InstructorController {
     public void removeInstructor(@PathVariable Long numInstructor) {
         instructorServices.removeInstructor(numInstructor);
     }
+    @PostMapping("add-instructor/{numCourse}")
+    public Instructor addInstructorAndAssignToCourse(
+            @RequestBody  Instructor instructor,
+            @PathVariable(name = "numCourse") Long numCourse) {
+        return instructorServices.addInstructorAndAssignToCourse(instructor, numCourse);
+    }
 }

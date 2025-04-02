@@ -32,5 +32,9 @@ public class Skier implements Serializable {
     Set<Registration> registrations;
     @ManyToMany (mappedBy = "skiers")
     Set<Piste> pistes;
+    public int getAge() {
+        return dateOfBirth != null ? LocalDate.now().getYear() - dateOfBirth.getYear() : 0;
+    }
+
 }
 

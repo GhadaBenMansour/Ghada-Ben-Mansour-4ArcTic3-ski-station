@@ -16,7 +16,6 @@ public class RegistrationController {
     @Autowired
     @Qualifier("registrationServices")
     private RegistrationServices registrationServices;
-
     @PostMapping("add")
     public Registration addRegistration(@RequestBody Registration registration) {
         return registrationServices.addRegistration(registration);
@@ -45,4 +44,20 @@ public class RegistrationController {
     public void removeRegistration(@PathVariable Long numRegistration) {
         registrationServices.removeRegistration(numRegistration);
     }
+    @PostMapping("addRegistrationAndAssignToSkier/{numSkieur}")
+    public Registration addRegistrationAndAssignToSkier(@RequestBody Registration registration,
+                                                                        @PathVariable Long numSkieur) {
+        return registrationServices.addRegistrationAndAssignToSkier(registration, numSkieur);
+    }
+    @PutMapping("assignRegistrationToCourse/{numRegistration}/{numCourse}")
+    public Registration assignRegistrationToCourse(@PathVariable Long numCourse, @PathVariable Long numRegistration) {
+        return registrationServices.assignRegistrationToCourse(numCourse, numRegistration);
+    }
+    @PostMapping("addRegistrationAndAssignToSkierAndCourse/{numSkier}/{numCourse}")
+    public Registration addRegistrationAndAssignToSkierAndCourse(@RequestBody Registration registration,
+                                                                 @PathVariable Long numSkier,
+                                                                 @PathVariable Long numCourse) {
+        return registrationServices.addRegistrationAndAssignToSkierAndCourse(registration, numSkier, numCourse);
+    }
+
 }

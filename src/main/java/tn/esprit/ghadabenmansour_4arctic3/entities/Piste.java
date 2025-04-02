@@ -1,5 +1,6 @@
 package tn.esprit.ghadabenmansour_4arctic3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -24,5 +25,7 @@ public class Piste implements Serializable {
     int length;
     int slope;
     @ManyToMany
+    @ToString.Exclude
+    @JsonIgnore
     Set<Skier> skiers;
 }

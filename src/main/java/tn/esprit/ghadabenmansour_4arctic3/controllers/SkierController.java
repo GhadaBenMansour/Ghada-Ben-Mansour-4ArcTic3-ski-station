@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ghadabenmansour_4arctic3.entities.Skier;
+import tn.esprit.ghadabenmansour_4arctic3.entities.TypeSubscription;
 import tn.esprit.ghadabenmansour_4arctic3.services.SkierServices;
 
 import java.util.List;
@@ -47,5 +48,15 @@ public class SkierController {
     @GetMapping("search")
     public List<Skier> searchSkierByName(@RequestParam String firstName, @RequestParam String lastName) {
         return skierServices.retrieveSkierByName(firstName, lastName);
+    }
+    @PostMapping("add-skier-course/{numCourse}")
+    public Skier addSkierAndAssignToCourse(
+            @RequestBody  Skier skier, @PathVariable(name = "numCourse") Long numCourse
+    ){
+        return skierServices.addSkierAndAssignToCourse(skier, numCourse);
+    }
+    @GetMapping("bySubscription/{type}")
+    public List<Skier> retrieveSkiersBySubscriptionType(@PathVariable TypeSubscription type) {
+        return skierServices.retrieveSkiersBySubscriptionType(type);
     }
 }
